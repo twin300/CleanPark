@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Nav Toggle
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const nav = document.querySelector('nav');
+    const navLinksItems = document.querySelectorAll('.nav-links a, .header-contacts .btn');
+
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        });
+    }
+
+    // Close menu when clicking a link
+    navLinksItems.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
     // Show More logic
     const moreButtons = document.querySelectorAll('.btn-more');
     moreButtons.forEach(btn => {
