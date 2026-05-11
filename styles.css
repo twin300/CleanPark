@@ -754,7 +754,7 @@ footer {
     flex-direction: column;
     gap: 6px;
     padding: 10px;
-    z-index: 1001;
+    z-index: 1002; /* Higher z-index to stay on top of everything */
 }
 
 .mobile-nav-toggle span {
@@ -794,29 +794,41 @@ footer {
         top: 0;
         right: 0;
         bottom: 0;
-        width: 70%;
+        width: 80%;
         background: var(--white);
-        padding: 100px 40px;
+        padding: 180px 40px 40px; /* Space for contacts at top */
         box-shadow: -10px 0 30px rgba(0,0,0,0.1);
         z-index: 1000;
-        gap: 20px;
+        gap: 25px;
+        overflow-y: auto;
     }
 
     nav.active .header-contacts {
         display: flex;
         flex-direction: column;
         position: fixed;
-        bottom: 40px;
-        left: 30%;
+        top: 0;
         right: 0;
-        padding: 0 40px;
+        width: 80%;
+        padding: 60px 40px 30px;
         z-index: 1001;
+        background: var(--white);
         gap: 15px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     nav.active .header-contacts .phone {
         margin-right: 0;
         font-size: 18px;
+        color: var(--primary-blue);
+        order: 2;
+        text-align: center;
+    }
+
+    nav.active .header-contacts .btn {
+        order: 1;
+        width: 100%;
+        text-align: center;
     }
 
     nav.active .mobile-nav-toggle span:nth-child(1) {
