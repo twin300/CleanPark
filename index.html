@@ -13,16 +13,18 @@
     <header>
         <nav class="container">
             <div class="logo"><span class="logo-clean">Clean</span><span class="logo-park">Парк</span></div>
+            <a href="#contacts" class="btn btn-sm btn-primary mobile-order-btn">Заказать уборку</a>
             <div class="nav-menu">
                 <ul class="nav-links">
                     <li><a href="#services">Услуги</a></li>
+                    <li><a href="#calculator">Калькулятор</a></li>
                     <li><a href="#windows">Окна</a></li>
                     <li><a href="#safety">Безопасность</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
                 <div class="header-contacts">
                     <a href="tel:+70000000000" class="phone">+7 (000) 000-00-00</a>
-                    <a href="#contacts" class="btn btn-sm btn-primary">Оставить заявку</a>
+                    <a href="#contacts" class="btn btn-sm btn-primary">Заказать уборку</a>
                 </div>
             </div>
             <button class="mobile-nav-toggle" aria-label="Открыть меню">
@@ -85,7 +87,7 @@
                             <li>Протирание зеркал, стеклянных дверец</li>
                             <li>Удаление пыли с полотенцесушителя и шкафчиков</li>
                             <li>Мытье пола с дезинфекцией</li>
-                            <li>Обработка дверных ручек и выключателей</li>
+                            <li>Обработка дверных ручек and выключателей</li>
                         </ul>
                     </div>
                     <button class="btn-more">Показать еще</button>
@@ -93,7 +95,7 @@
                 <div class="service-card featured" data-reveal>
                     <h3>Генеральная уборка</h3>
                     <p>Глубокое очищение каждого уголка вашей квартиры.</p>
-                    <div class="price">от 10 000 ₽</div>
+                    <div class="price">от 250 ₽/м²</div>
                     <ul class="service-list">
                         <li>Удаление пыли со всех поверхностей (карнизы, люстры, радиаторы)</li>
                         <li>Протирка дверей, откосов, фурнитуры, выключателей и розеток</li>
@@ -164,6 +166,36 @@
         </div>
     </section>
 
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Рассчитайте <span>стоимость</span></h2>
+            <div class="calculator-card" data-reveal>
+                <div class="calc-grid">
+                    <div class="calc-inputs">
+                        <div class="input-group">
+                            <label>Тип уборки</label>
+                            <div class="cleaning-type-slider">
+                                <button type="button" class="type-arrow prev" aria-label="Предыдущий тип">←</button>
+                                <div class="type-display" id="type-display" data-value="250">Генеральная (от 250 ₽/м²)</div>
+                                <button type="button" class="type-arrow next" aria-label="Следующий тип">→</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="area">Площадь квартиры (м²)</label>
+                            <input type="number" id="area" placeholder="Например: 45" min="1" value="45">
+                        </div>
+                    </div>
+                    <div class="calc-result">
+                        <div class="result-label">Приблизительная стоимость:</div>
+                        <div class="result-value"><span id="total-price">11 250</span> ₽</div>
+                        <p class="result-note">* Итоговая стоимость может измениться после уточнения деталей менеджером.</p>
+                        <a href="#contacts" class="btn btn-primary w-full text-center" style="display: block; width: 100%;">Забронировать уборку</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="windows" class="windows-section">
         <div class="container grid-2">
             <div class="windows-image" data-reveal>
@@ -218,13 +250,13 @@
             <div class="local-content" data-reveal>
                 <div class="badge">Ваш сосед в ЖК</div>
                 <h2 class="section-title left">Работаем рядом <span>с вами</span></h2>
-                <p class="section-desc">Мы находимся и работаем преимущественно в <strong>ЖК Люблинский Парк</strong>. Для нас это значит быть всегда на связи с нашими клиентами.</p>
+                <p class="section-desc">Мы находимся и работаем преимущественно в <strong>ЖК Люблинский Парк</strong>. Для нас это значит быть всегда на связи с нашими клиентами. Если вам нужен качественный <strong>клининг в ЖК Люблинский Парк</strong> или профессиональная <strong>уборка квартир в Люблинском Парке</strong>, мы — ваш лучший выбор.</p>
                 <div class="local-features">
                     <div class="local-feature">
                         <div class="lf-icon"><img src="https://img.icons8.com/ios/50/228be6/clock.png" alt="Быстро"></div>
                         <div class="lf-text">
                             <h5>Приедем быстро</h5>
-                            <span>В случае необходимости будем у вас в кратчайшие сроки, так как мы рядом.</span>
+                            <span>В случае необходимости будем у вас в кратчайшие сроки, так как мы рядом. Уборка в Люблино еще никогда не была такой доступной.</span>
                         </div>
                     </div>
                     <div class="local-feature">

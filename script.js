@@ -55,6 +55,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
+    // Calculator Logic
+    const typeDisplay = document.getElementById('type-display');
+    const areaInput = document.getElementById('area');
+    const totalPriceSpan = document.getElementById('total-price');
+    const prevBtn = document.querySelector('.type-arrow.prev');
+    const nextBtn = document.querySelector('.type-arrow.next');
+
+    const cleaningTypes = [
+        { name: 'Поддерживающая (от 150 ₽/м²)', value: 150 },
+        { name: 'Генеральная (от 250 ₽/м²)', value: 250 },
+        { name: 'После ремонта (от 400 ₽/м²)', value: 400 }
+    ];
+
+    let currentTypeIndex = 1; // Default to General
+
+    if (typeDisplay && areaInput && totalPriceSpan && prevBtn && nextBtn) {
+        const updateUI = () => {
+            const type = cleaningTypes[currentTypeIndex];
+            typeDisplay.textContent = type.name;
+            typeDisplay.dataset.value = type.value;
+            calculateTotal();
+        };
+
+        const calculateTotal = () => {
+            const pricePerMeter = parseInt(typeDisplay.dataset.value);
+            const area = parseFloat(areaInput.value) || 0;
+            const total = pricePerMeter * area;
+            
+            totalPriceSpan.textContent = total.toLocaleString('ru-RU');
+        };
+
+        prevBtn.addEventListener('click', () => {
+            currentTypeIndex = (currentTypeIndex - 1 + cleaningTypes.length) % cleaningTypes.length;
+            updateUI();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentTypeIndex = (currentTypeIndex + 1) % cleaningTypes.length;
+            updateUI();
+        });
+
+        areaInput.addEventListener('input', calculateTotal);
+    }
+
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
