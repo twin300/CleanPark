@@ -917,7 +917,7 @@ footer {
 
 @media (max-width: 992px) {
     .logo {
-        font-size: 20px;
+        font-size: 18px !important;
         flex-shrink: 0;
     }
 
@@ -980,10 +980,9 @@ footer {
 
     .mobile-order-btn {
         display: inline-block !important;
-        margin-left: auto;
-        margin-right: 12px;
-        padding: 5px 8px !important;
-        font-size: 10px !important;
+        margin: 0 8px !important;
+        padding: 4px 8px !important;
+        font-size: 9px !important;
         z-index: 1005 !important;
         position: relative !important;
         visibility: visible !important;
@@ -992,12 +991,14 @@ footer {
         color: var(--primary-blue) !important;
         font-weight: 700 !important;
         text-transform: uppercase;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.5px;
         border-radius: 4px;
         white-space: nowrap;
         box-shadow: none !important;
-        height: fit-content;
+        height: auto;
         align-self: center;
+        flex: 0 1 auto;
+        text-align: center;
     }
 
     nav.active .mobile-order-btn {
@@ -1006,6 +1007,7 @@ footer {
 
     .mobile-nav-toggle {
         display: flex;
+        flex-shrink: 0;
     }
 
     nav.active .mobile-nav-toggle span:nth-child(1) {
