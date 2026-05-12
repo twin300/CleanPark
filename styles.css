@@ -916,6 +916,11 @@ footer {
 }
 
 @media (max-width: 992px) {
+    .logo {
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+
     .nav-menu {
         display: flex;
         position: fixed;
