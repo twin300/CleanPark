@@ -2,12 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile navigation
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const nav = document.querySelector('nav');
+    const header = document.querySelector('header');
     const navLinksItems = document.querySelectorAll('.nav-links a');
+    const mobileQuery = window.matchMedia('(max-width: 992px)');
 
     if (mobileNavToggle && nav) {
         mobileNavToggle.addEventListener('click', () => {
             const isOpen = nav.classList.toggle('active');
             mobileNavToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (isOpen) {
+                header?.classList.remove('header-hidden');
+            }
         });
 
         navLinksItems.forEach(link => {
@@ -16,6 +21,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileNavToggle.setAttribute('aria-expanded', 'false');
             });
         });
+    }
+
+    if (header && mobileNavToggle && nav) {
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        const closeMobileMenu = () => {
+            nav.classList.remove('active');
+            mobileNavToggle.setAttribute('aria-expanded', 'false');
+        };
+
+        const syncHeaderOnScroll = () => {
+            const currentScrollY = window.scrollY;
+            const delta = currentScrollY - lastScrollY;
+
+            if (!mobileQuery.matches || currentScrollY < 80) {
+                header.classList.remove('header-hidden');
+            } else if (delta > 8) {
+                closeMobileMenu();
+                header.classList.add('header-hidden');
+            } else if (delta < -8) {
+                header.classList.remove('header-hidden');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(syncHeaderOnScroll);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        const resetMobileHeader = () => {
+            header.classList.remove('header-hidden');
+            closeMobileMenu();
+            lastScrollY = window.scrollY;
+        };
+
+        if (mobileQuery.addEventListener) {
+            mobileQuery.addEventListener('change', resetMobileHeader);
+        } else {
+            mobileQuery.addListener(resetMobileHeader);
+        }
     }
 
     // Show More logic

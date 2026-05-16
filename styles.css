@@ -987,17 +987,13 @@ footer {
 
 @media (max-width: 992px) {
     header {
-        position: fixed;
+        position: sticky;
         top: 0;
-        left: 0;
-        right: 0;
         padding: 14px 0;
         background: rgba(255, 255, 255, 0.96);
         box-shadow: 0 10px 30px rgba(0, 61, 128, 0.08);
-    }
-
-    body {
-        padding-top: 74px;
+        transform: translateY(0);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
     }
 
     .logo {
@@ -1028,12 +1024,12 @@ footer {
         max-height: 0;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-6px);
-        transition: max-height 0.28s ease, opacity 0.2s ease, margin-top 0.28s ease, transform 0.28s ease, visibility 0.2s ease;
+        transform: translateY(-4px);
+        transition: max-height 0.3s ease, opacity 0.22s ease, margin-top 0.3s ease, transform 0.3s ease, visibility 0.22s ease;
     }
 
     nav.active .nav-menu {
-        max-height: 260px;
+        max-height: 420px;
         opacity: 1;
         visibility: visible;
         margin-top: 8px;
@@ -1041,14 +1037,14 @@ footer {
     }
     
     .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         width: 100%;
-        gap: 10px;
+        gap: 8px;
         padding: 14px;
         background: rgba(255, 255, 255, 0.98);
         border: 1px solid rgba(0, 86, 179, 0.12);
-        border-radius: 18px;
+        border-radius: 18px 18px 10px 10px;
         box-shadow: 0 18px 45px rgba(0, 61, 128, 0.12);
     }
     
@@ -1057,16 +1053,40 @@ footer {
         align-items: center;
         justify-content: center;
         min-height: 38px;
-        padding: 0 14px;
-        border-radius: 999px;
-        background: var(--light-blue);
+        padding: 0 12px;
+        border-radius: 10px;
+        background: rgba(240, 247, 255, 0.85);
         color: var(--dark-blue);
         font-size: 13px;
         white-space: nowrap;
     }
 
     .header-contacts {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 8px;
+        padding: 14px;
+        background: rgba(0, 86, 179, 0.04);
+        border: 1px solid rgba(0, 86, 179, 0.1);
+        border-radius: 10px 10px 18px 18px;
+    }
+
+    .header-location {
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.35;
+        color: #5f6f7a;
+    }
+
+    .header-contacts .phone {
+        text-align: center;
+        color: var(--primary-blue);
+        font-family: var(--header-font);
+        font-size: 17px;
+        font-weight: 800;
     }
 
     .mobile-nav-toggle {
@@ -1079,6 +1099,19 @@ footer {
         background: var(--light-blue);
         flex-shrink: 0;
         margin-left: auto;
+    }
+
+    header.header-hidden {
+        transform: translateY(-110%);
+        box-shadow: none;
+    }
+
+    header.header-hidden nav.active .nav-menu {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        margin-top: 0;
+        transform: translateY(-4px);
     }
 
     nav.active .mobile-nav-toggle span:nth-child(1) {
