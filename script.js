@@ -35,13 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const syncHeaderOnScroll = () => {
             const currentScrollY = window.scrollY;
             const delta = currentScrollY - lastScrollY;
+            const menuIsOpen = nav.classList.contains('active');
 
-            if (!mobileQuery.matches || currentScrollY < 80) {
+            if (!mobileQuery.matches || currentScrollY < 40 || menuIsOpen) {
                 header.classList.remove('header-hidden');
-            } else if (delta > 8) {
+            } else if (delta > 6) {
                 closeMobileMenu();
                 header.classList.add('header-hidden');
-            } else if (delta < -8) {
+            } else if (delta < -2) {
                 header.classList.remove('header-hidden');
             }
 
